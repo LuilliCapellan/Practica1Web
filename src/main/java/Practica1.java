@@ -39,13 +39,14 @@ public class Practica1 {
         //Practica
 
         //parte a) Indicar la cantidad de lineas del recurso retornado
-        System.out.println("\nParte A: \n");
-        System.out.println("#Lineas: " + c.body().split("\n").length);
+        System.out.println("A) : " + c.body().split("\n").length + " Lineas");
 
         //Parte b) Indicar la cantidad de párrafos (p) que contiene el documento HTML
         Elements elements = document.getElementsByTag("p");
-        System.out.println("#párrafos: " + elements.size());
+        System.out.println("B) : " + elements.size() + " Parrafos");
 
-
+        //Parte c) Indicar la cantidad de imágenes (img) dentro de los párrafos que
+        //contiene el archivo HTML.
+        System.out.println("C) : " + document.select("p img").size() + " Fotos dentro del parrafo");
     }
 }
