@@ -1,6 +1,7 @@
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.FormElement;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -48,5 +49,22 @@ public class Practica1 {
         //Parte c) Indicar la cantidad de imágenes (img) dentro de los párrafos que
         //contiene el archivo HTML.
         System.out.println("C) : " + document.select("p img").size() + " Fotos dentro del parrafo");
+
+        //Parte d) indicar la cantidad de formularios (form) que contiene el HTML por
+        //categorizando por el método implementado POST o GET.
+        elements = document.getElementsByTag("form");
+        System.out.println("D) : " + elements.size() + " formularios");
+
+        int Get = 0, Post = 0;
+        for (FormElement form : document.getElementsByTag("form").forms()) {
+            if (form.attr("method").equalsIgnoreCase("GET")) {
+                Get++;
+            }
+            if (form.attr("method").equalsIgnoreCase("POST")) {
+                Post++;
+            }
+        }
+        System.out.println("\n" + Get + " GET \n" + Post + " POST");
+
     }
 }
