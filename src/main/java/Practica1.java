@@ -1,19 +1,18 @@
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 /**
  * Created by Luis Capellan on 24/01/2019
- *
  */
 
 
-
 public class Practica1 {
-    public static void main(String [] args){
+    public static void main(String[] args) {
 
         Document document;
         Connection.Response c;
@@ -22,14 +21,14 @@ public class Practica1 {
         System.out.println("\n------------------------Practica de  HTTP---------------------\n");
 
         //receiver
-        while (true){
-            try{
+        while (true) {
+            try {
                 System.out.print("Direccion URL:");
                 URL = scanner.nextLine();
 
-                document = Jsoup.connect("http://"+URL).get();
-                c = Jsoup.connect("http://"+URL).execute();
-            }catch (Exception ex){
+                document = Jsoup.connect("http://" + URL).get();
+                c = Jsoup.connect("http://" + URL).execute();
+            } catch (Exception ex) {
                 System.out.println("URL no valida");
                 continue;
             }
@@ -41,7 +40,12 @@ public class Practica1 {
 
         //parte a) Indicar la cantidad de lineas del recurso retornado
         System.out.println("\nParte A: \n");
-        System.out.println("Cantidad de Líneas: " + c.body().split("\n").length);
+        System.out.println("#Lineas: " + c.body().split("\n").length);
+
+        //Parte b) Indicar la cantidad de párrafos (p) que contiene el documento HTML
+        Elements elements = document.getElementsByTag("p");
+        System.out.println("#párrafos: " + elements.size());
+
 
     }
 }
