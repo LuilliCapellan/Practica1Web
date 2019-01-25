@@ -73,7 +73,7 @@ public class Practica1 {
         int formulario = 1;
 
         for (Element e : elements) {
-            System.out.println("Titulo del formulario " + formulario + " es " + elements.attr("name\n"));
+            System.out.println(" E) : \nTitulo del formulario " + formulario + " es " + elements.attr("name\n"));
             int input = 1;
             for (Element element : e.getAllElements()) {
                 if (element.tagName().equals("input")) {
@@ -88,13 +88,19 @@ public class Practica1 {
             }
             formulario++;
         }
+
+        //Parte f) Para cada formulario “parseado”, identificar que el método de envío
+        //del formulario sea POST y enviar una petición al servidor con el
+        //parámetro llamado asignatura y valor practica1 y un header llamado
+        //matricula con el valor correspondiente a matrícula asignada. Debe
+        //mostrar la respuesta por la salida estándar.
         int x = 1;
         Document ResultingDoc;
         for (Element form : doc.getElementsByTag("form").forms()) {
             Elements postForm = form.getElementsByAttributeValueContaining("method", "post");
             for (Element form2 : postForm) {
                 try {
-                    System.out.println("Formulario " + x + ":");
+                    System.out.println(" F) : \nFormulario " + x + ":");
                     String absURL = form2.absUrl("action");
                     ResultingDoc = Jsoup.connect(absURL).data("asignatura", "practica1").header("matricula", "20140984").post();
                     System.out.println("\nResultado");
