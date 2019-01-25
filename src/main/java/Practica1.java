@@ -70,11 +70,11 @@ public class Practica1 {
 
         //Parte e) Para cada formulario mostrar los campos del tipo input y su
         //respectivo tipo que contiene en el documento HTML.
-        int formulario = 0;
+        int formulario = 1;
 
         for (Element e : elements) {
             System.out.println("Titulo del formulario " + formulario + " es " + elements.attr("name\n"));
-            int input = 0;
+            int input = 1;
             for (Element element : e.getAllElements()) {
                 if (element.tagName().equals("input")) {
                     System.out.println("Nombre del Input " + input + " es " + element.attr("name\n"));
@@ -88,7 +88,7 @@ public class Practica1 {
             }
             formulario++;
         }
-        int x = 0;
+        int x = 1;
         Document ResultingDoc;
         for (Element form : doc.getElementsByTag("form").forms()) {
             Elements postForm = form.getElementsByAttributeValueContaining("method", "post");
